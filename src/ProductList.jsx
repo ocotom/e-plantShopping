@@ -246,6 +246,11 @@ const handlePlantsClick = (e) => {
     e.preventDefault();
     setShowCart(false);
   };
+
+  const handleAddToCart = () => {
+
+  };
+
     return (
         <div>
              <div className="navbar" style={styleObj}>
@@ -270,7 +275,19 @@ const handlePlantsClick = (e) => {
         <div className="product-grid">
             {plantsArray.map((category,index)=>(
                 <div key={index}>
-                    <h1>{category.category}</h1>
+                    <h1><div>{category.category}</div></h1>
+                    <div className='product-list'>
+                        {category.plants.map((plant,plantIndex) => (
+                            <div key={plantIndex} className='product-card'>
+                                <img className='product-image' src={plant.image} />
+                                <div className='product-title'>{plant.name}</div>
+                                <p>{plant.description}</p>
+                                <button className='product-button' onClick={() => handleAddToCart(plant)}>Add to cart</button>
+                            </div>
+                        ))}
+                    </div>
+
+
                 </div>
 
             ))}
